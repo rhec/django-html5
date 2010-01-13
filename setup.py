@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
  
 setup(
     name='html5',
-    version='0.1',
+    version='0.2',
     description='Django HTML5 support',
     author='Robert Eanes',
     author_email='django@robsinbox.com',
