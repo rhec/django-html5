@@ -9,12 +9,13 @@ class HTML5Input(Input):
     
     def render(self, *args, **kwargs):
         rendered_string = super(HTML5Input, self).render(*args, **kwargs)
-        if self.use_autofocus_fallback:
+        # js only works when an id is set
+        if self.use_autofocus_fallback and kwargs.has_key('attrs') and kwargs['attrs'].has_key("id"):
             rendered_string += """<script>
 if (!("autofocus" in document.createElement("input"))) {
-  document.getElementById("q").focus();
+  document.getElementById("%s").focus();
 }
-</script>"""
+</script>""" % kwargs['attrs']['id']
         return rendered_string
 
 class TextInput(HTML5Input):

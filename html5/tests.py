@@ -59,10 +59,14 @@ u'<input type="datetime-local" name="datetime_local" />'
 >>> w = TextInput()
 >>> w.render('name', '', attrs={'placeholder':'placeholder text'})
 u'<input type="text" name="name" placeholder="placeholder text" />'
+
+# Test autofocus attr #######################################\n
 >>> w.render('name', '', attrs={'autofocus':'true'})
 u'<input type="text" name="name" autofocus="true" />'
 >>> w.use_autofocus_fallback = True
+>>> w.render('name', '', attrs={'autofocus':'true', 'id': "id_name"})
+u'<input type="text" name="name" id="id_name" autofocus="true" /><script>\nif (!("autofocus" in document.createElement("input"))) {\n  document.getElementById("id_name").focus();\n}\n</script>'
 >>> w.render('name', '', attrs={'autofocus':'true'})
-u'<input type="text" name="name" autofocus="true" /><script>\nif (!("autofocus" in document.createElement("input"))) {\n  document.getElementById("q").focus();\n}\n</script>'
+u'<input type="text" name="name" autofocus="true" />'
 
 """
