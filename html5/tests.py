@@ -68,5 +68,10 @@ u'<input type="text" name="name" autofocus="true" />'
 u'<input type="text" name="name" id="id_name" autofocus="true" /><script>\nif (!("autofocus" in document.createElement("input"))) {\n  document.getElementById("id_name").focus();\n}\n</script>'
 >>> w.render('name', '', attrs={'autofocus':'true'})
 u'<input type="text" name="name" autofocus="true" />'
-
+# should not render js when autofocus attribute is not present\n
+>>> w.render('name', '', attrs={'id': "id_name"})
+u'<input type="text" name="name" id="id_name" />'
+# should not render js when id is blank\n
+>>> w.render('name', '', attrs={'id': "", 'autofocus':'true'})
+u'<input autofocus="true" type="text" name="name" id="" />'
 """
