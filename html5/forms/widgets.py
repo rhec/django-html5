@@ -23,7 +23,10 @@ class TextInput(HTML5Input):
 
 class EmailInput(HTML5Input):
     input_type = 'email'
-    
+
+class TelephoneInput(HTML5Input):
+    input_type = 'tel'
+
 class URLInput(HTML5Input):
     input_type = 'url'
 
