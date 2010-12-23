@@ -21,6 +21,9 @@ u'<input type="text" name="email" />'
 >>> w = EmailInput()
 >>> w.render('email', '')
 u'<input type="email" name="email" />'
+>>> w = TelephoneInput()
+>>> w.render('phone_number', '')
+u'<input type="tel" name="phone_number" />'
 >>> w = URLInput()
 >>> w.render('url', '')
 u'<input type="url" name="url" />'
